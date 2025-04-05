@@ -107,7 +107,7 @@ def train_siamese_network(train_dataset, val_loader, model, num_epochs=20, lr=0.
             for embeddings, labels in val_loader:
                 embeddings, labels = embeddings.to(device), labels.to(device)
                 outputs = model(embeddings).squeeze()
-                loss = criterion(outputs, labels)
+                loss = criterion(outputs, labels.float())
                 val_loss += loss.item()
                 
                 all_labels.extend(labels.cpu().numpy())
