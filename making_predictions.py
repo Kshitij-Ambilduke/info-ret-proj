@@ -5,8 +5,8 @@ from tqdm import tqdm
 import numpy as np 
 import json 
 
-siamese_model = SiameseNetwork(input_dim=768, hidden_dims=[512, 256, 128]) #input dim=768 for not patentSBERTa
-siamese_model.load_state_dict(torch.load("patent_siamese_network.pt"))
+siamese_model = SiameseNetwork(input_dim=1536, hidden_dims=[128]) #input dim=768 for not patentSBERTa
+siamese_model.load_state_dict(torch.load("patent_siamese_network_TAC.pt"))
 siamese_model.eval()
 
 
@@ -14,8 +14,8 @@ QUERY_SET = "test"              # Choose from: "train" or "test"
 SAVE_RESULTS = True
 TOP_N = 100  # Number of documents to retrieve for each query
 
-MODEL_NAME = "all-MiniLM-L6-v2"  # Choose from: "all-MiniLM-L6-v2" or "PatentSBERTa"
-CONTENT_TYPE = "TA"              # Choose from: "TA", "claims", or "TAC"
+MODEL_NAME = "PatentSBERTa"  # Choose from: "all-MiniLM-L6-v2" or "PatentSBERTa"
+CONTENT_TYPE = "TAC"              # Choose from: "TA", "claims", or "TAC"
 POOLING = "mean"                 # The pooling strategy used in create_embeddings.py
 
 BASE_DIR = "/Users/kshitij/Documents/UPSaclay/T4/InfoRetrieval/CodaBench/IR2025"

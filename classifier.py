@@ -3,7 +3,7 @@ import torch.nn as nn
 import torch.optim as optim
 from torch.utils.data import DataLoader
 from dataloading import CustomDataset
-from sklearn.metrics import average_precision_score
+from sklearn.metrics import average_precision_score, accuracy_score
 from tqdm import tqdm
 
 class SiameseNetwork(nn.Module):
@@ -137,8 +137,8 @@ if __name__ == "__main__":
     
     # Paths
     base_dir = "/Users/kshitij/Documents/UPSaclay/T4/InfoRetrieval/CodaBench/IR2025"
-    model_name = "all-MiniLM-L6-v2"
-    data_type = "TA"
+    model_name = "PatentSBERTa"
+    data_type = "TAC"
     
     # Create datasets
     train_dataset = CustomDataset(model=model_name, which_data_incoming=data_type, 
@@ -157,11 +157,11 @@ if __name__ == "__main__":
         break
     
     # Create and train model
-    siamese_model = SiameseNetwork(input_dim=input_dim, hidden_dims=[512, 256, 128]) #input dim=768 for not patentSBERTa
+    siamese_model = SiameseNetwork(input_dim=input_dim, hidden_dims=[128]) #input dim=768 for not patentSBERTa
     trained_model, history = train_siamese_network(train_dataset, val_loader, siamese_model, 
-                                                  num_epochs=15, lr=0.001) 
+                                                  num_epochs=25, lr=0.001) 
         
     print(history)
     
     # Save the model
-    torch.save(trained_model.state_dict(), "patent_siamese_network.pt")
+    torch.save(trained_model.state_dict(), "patent_siamese_network_TAC.pt")
