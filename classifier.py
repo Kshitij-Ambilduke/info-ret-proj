@@ -159,7 +159,7 @@ if __name__ == "__main__":
     # Create and train model
     siamese_model = SiameseNetwork(input_dim=input_dim, hidden_dims=[512, 256, 128])
     trained_model, history = train_siamese_network(train_dataset, val_loader, siamese_model, 
-                                                  num_epochs=50, lr=0.001)
+                                                  num_epochs=15, lr=0.001)
         
     print(history)
     
