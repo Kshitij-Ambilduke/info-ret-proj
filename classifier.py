@@ -35,7 +35,7 @@ class SiameseNetwork(nn.Module):
     
     def forward(self, x):
         """Forward pass through the network"""
-        return self.model(x)
+        return self.model(x.squeeze())
 
 
 def train_siamese_network(train_dataset, val_loader, model, num_epochs=20, lr=0.001, weight_decay=1e-7):
@@ -153,7 +153,7 @@ if __name__ == "__main__":
     
     # Get embedding dimension from the first batch
     for embeddings, _ in val_loader:
-        input_dim = embeddings.shape[1]
+        input_dim = embeddings.shape[-1]
         break
     
     # Create and train model
