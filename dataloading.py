@@ -117,16 +117,16 @@ class CustomDataset(Dataset):
 def collator_func(batch):
     pass
     
-dataset = CustomDataset(
-    model = "all-MiniLM-L6-v2",
-    which_data_incoming = "TA",
-    which_data_existing = "TA",
-    base_dir = "/Users/kshitij/Documents/UPSaclay/T4/InfoRetrieval/CodaBench/IR2025",
-    split = "train"
-)
-dataloader = DataLoader(dataset, batch_size=32, shuffle=True, num_workers=0)  # num_workers=0 for dynamic sampling
-for i in dataloader:
-    print(i[0].shape, i[1])
-    # print(i[1])
-    break
+# dataset = CustomDataset(
+#     model = "all-MiniLM-L6-v2",
+#     which_data_incoming = "TA",
+#     which_data_existing = "TA",
+#     base_dir = "/Users/kshitij/Documents/UPSaclay/T4/InfoRetrieval/CodaBench/IR2025",
+#     split = "train"
+# )
+# dataloader = DataLoader(dataset, batch_size=32, shuffle=True, num_workers=0)  # num_workers=0 for dynamic sampling
+# for i in dataloader:
+#     print(i[0].shape, i[1])
+#     # print(i[1])
+#     break
     
