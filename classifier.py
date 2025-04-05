@@ -82,7 +82,7 @@ def train_siamese_network(train_dataset, val_loader, model, num_epochs=20, lr=0.
             
             # Forward pass
             outputs = model(embeddings).squeeze()
-            loss = criterion(outputs, labels)
+            loss = criterion(outputs, labels.float())
             
             # Backward pass and optimization
             optimizer.zero_grad()
